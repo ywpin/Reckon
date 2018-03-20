@@ -121,3 +121,32 @@ const styles = StyleSheet.create({
 });
 
 // AppRegistry.registerComponent('AsyncStorageExample', () => AsyncStorageExample);
+
+  // async onLoginPressed() {
+  //   try{
+  //     // const value = await AsyncStorage.getItem('@MySuperStore:key');
+  //     // this.setState({myKey: value});
+  //   }, 
+  //   body: JSON.stringify({
+  //         session:{
+  //           email: this.state.Username,
+  //           Password: this.state.Password
+  //         } 
+  //   });
+  
+  //   let res = await value.text();
+  
+  //   if (value.status >= 200 && value.status < 300) {
+  
+  //       this.setState({error: ""});
+  //       let accessToken = res;
+  //       console.log("res token:" + accessToken);
+  //     } else{
+  
+  //       let error = res;
+  //       throw error;
+  //     }catch (error) {
+  //       this.setState({error: error});
+  //       console.log("error" + error);
+  //     }
+  // }

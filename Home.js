@@ -48,7 +48,7 @@ export default class Home extends React.Component {
           </View>
           <View style={styles.div}>
             <Text style={styles.smallTitle}>Balance</Text>
-              <Text></Text>
+            <Text style={styles.button}></Text>
           </View>
         </View>
         <View style={styles.down}>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 import Logo from '../login/Logo';
-import Form from '../login/Form';
+import Form from '../register/Form';
 
 import {Actions} from 'react-native-router-flux';
 

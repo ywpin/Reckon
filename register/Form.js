@@ -10,13 +10,9 @@ export default class Form extends Component<{}>{
   constructor(){
     super()
     this.state = {
-      Username:"", Password:"", error:""
+      Username:"", Password:""
     }
   }
-
-  Home() {
-    Actions.Home()
-  }  
 
   saveData =() => {
     const {Username,Password} = this.state;
@@ -33,7 +29,7 @@ export default class Form extends Component<{}>{
       AsyncStorage.setItem('myArray',JSON.stringify(myArray))
       Keyboard.dismiss();
       alert('Username : ' + Username + ' ' + '   Password : ' + Password)
-      Actions.Home()
+      alert("Complete")
     }
   }
       
@@ -58,7 +54,7 @@ export default class Form extends Component<{}>{
           onChangeText={(text) => this.setState({Password: text})}
         />
         <TouchableOpacity onPress={this.saveData} style={styles.submitarea}>
-          <Text style={styles.submit}>Login</Text>
+          <Text style={styles.submit}>Register</Text>
         </TouchableOpacity>
       </View>
     )
