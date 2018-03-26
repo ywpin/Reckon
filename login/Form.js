@@ -16,13 +16,14 @@ export default class Form extends Component<{}>{
   }
 
   _login() {
-    firebaseApp.auth().signInWithEmailAndPassword(this.state.Email, this.state.Password).catch(function(error) {
-      alert(error);
-    });
+    firebaseApp.auth().signInWithEmailAndPassword(this.state.Email, this.state.Password)
+      .then(value => {
+        Actions.Home()
+      })
+      .catch(error => {
+        alert(error);
+      });
   }
-    // .then(function(user) {
-    //   Actions.Home()
-    // })
 
   render() {
     return (
