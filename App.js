@@ -9,6 +9,7 @@ import List from './List';
 import List_2 from './List_2';
 import Expense from './Expense';
 import Page from './calender/Page';
+import Firebase from './login/firebase';
 
 export default class Date_router extends Component<{}>{
   render() {

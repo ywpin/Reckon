@@ -3,47 +3,40 @@ import { Text, View, StyleSheet, TextInput, TouchableOpacity, AsyncStorage, Keyb
 import { Constants } from 'expo';
 
 import {Actions} from 'react-native-router-flux';
+import {firebaseApp} from './../login/firebase';
 import Page from './../calender/Page';
 
 export default class Form extends Component<{}>{
 
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
-      Username:"", Password:""
+      Email:"", Password:""
     }
+    this._register = this._register.bind(this)
   }
 
-  saveData =() => {
-    const {Username,Password} = this.state;
- 
-    let myArray ={
-      Username: Username,
-      Password: Password,
+  _register(){
+    if (this.state.Password) {
+      firebaseApp.auth().createUserWithEmailAndPassword(this.state.Email, this.state.Password).catch(function(error) {
+      alert(error.code)
+      })
+    }  
+     else{
+      alert('Register is not complete')
     }
-    if (Username,Password == "") {
-      alert("Please complete the Form");    
-    }
+  }
     
-    else{
-      AsyncStorage.setItem('myArray',JSON.stringify(myArray))
-      Keyboard.dismiss();
-      alert('Username : ' + Username + ' ' + '   Password : ' + Password)
-      alert("Complete")
-    }
-  }
-      
-
   render() {
     return (
        <View style={styles.container} behavior="padding">
         <TextInput style={styles.inputBox}
           underlineColorAndroid ="transparent"
-          placeholder="Username"
+          placeholder="Email"
           placeholderTextColor= "#ffffff"
           keyboardType="email-address" 
           onSubmitEditing={() => this.Password.focus()}
-          onChangeText={(text) => this.setState({Username: text})}
+          onChangeText={(text) => this.setState({Email: text})}
         />       
         <TextInput style={styles.inputBox}
           underlineColorAndroid ="transparent"
@@ -52,8 +45,8 @@ export default class Form extends Component<{}>{
           placeholderTextColor= "#ffffff"
           ref={(input) => this.Password = input}
           onChangeText={(text) => this.setState({Password: text})}
-        />
-        <TouchableOpacity onPress={this.saveData} style={styles.submitarea}>
+        />          
+        <TouchableOpacity onPress={this._register} style={styles.submitarea}>
           <Text style={styles.submit}>Register</Text>
         </TouchableOpacity>
       </View>
