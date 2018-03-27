@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text, Platform, FlatList  } from 'react-native';
 import DatePicker from 'react-native-datepicker'
 import { Constants } from 'expo';
 
@@ -8,7 +8,7 @@ import Form from './../login/Form';
 export default class MyDatePicker extends Component {
   constructor(props){
     super(props)
-    this.state = {date:null}
+    this.state = {date:null, data:[{name: 'Title Text', key: 'item1'}]}
   }
  
   render(){
@@ -43,6 +43,12 @@ export default class MyDatePicker extends Component {
           onDateChange={(date) => {this.setState({date: date})}}
         />
         <View>
+          <FlatList
+            data = {this.state.data}
+            renderItem={({item})=>
+          <Text>{item.name}</Text>
+          }
+          />
         </View>
       </View>
     )

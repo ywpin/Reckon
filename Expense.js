@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View, TouchableOpacity, Button, Alert } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, Button, Alert, Platform, FlatList } from 'react-native';
 import DatePicker from 'react-native-datepicker'
 import { Constants } from 'expo';
 
@@ -10,9 +10,9 @@ export default class Expense extends React.Component {
 
   constructor(props){
     super(props)
-    this.state = {date:null}
+    this.state = {date:null, data:[{name: 'hi'}]}
   }
-
+// 
   goBack() {
     Actions.pop();
   }
@@ -96,8 +96,15 @@ export default class Expense extends React.Component {
             <Text style={styles.smallTitle}>Category</Text>
             <TouchableOpacity
               onPress={this.List} 
-              style={styles.button}>
-              <Text style={styles.buttonWord}>{this.state.myKey}</Text>
+              style = {styles.button}
+              >
+              <FlatList
+              style = {styles.buttonWord}
+              data = {this.state.data}
+              renderItem={({item}) =>
+              <Text>{item.name}</Text>
+              }
+              />
             </TouchableOpacity>
           </View>
         </View>
@@ -155,7 +162,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonWord: {
-    fontSize: 20,
+    // fontSize: 20,
   },
   down: {
     flex: 1,
