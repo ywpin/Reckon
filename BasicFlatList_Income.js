@@ -3,8 +3,8 @@ import { AppRegistry, Text, View, TouchableHighlight, StyleSheet, Alert, Platfor
 import { Constants } from 'expo';
 import {Actions} from 'react-native-router-flux';
 import Swipeout from 'react-native-swipeout';
-import flatListData from './flatListData';
-import AddModal from './AddModal';
+import flatListData_Income from './flatListData_Income';
+import AddModal_Income from './AddModal_Income';
 
 class FlatListItem extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class FlatListItem extends Component {
               [
               {text: 'No', onPress: () => alert('Cancel Pressed'), style: 'cancel'},
               {text: 'Yes', onPress: () => {
-                flatListData.splice(this.props.index, 1);
+                flatListData_Income.splice(this.props.index, 1);
                 this.props.parentFlatList.refreshFlatList(deletingRow);
               }},
               ],
@@ -89,7 +89,7 @@ export default class BasicFlatList extends Component {
   }
   _onPressAdd () {
     // alert("You add Item")
-    this.refs.addModal.showAddModal();
+    this.refs.addModal_Income.showAddModal();
   }
 
   _onRefresh(){
@@ -102,7 +102,7 @@ export default class BasicFlatList extends Component {
   render () {
     return(
       <View style={{flex: 1, backgroundColor: '#ecf0f2', paddingTop: Constants.statusBarHeight, flexDirection: 'column'}}>
-        <FlatList ref={"flatList"} data={flatListData} renderItem={({item, index}) => {
+        <FlatList ref={"flatList"} data={flatListData_Income} renderItem={({item, index}) => {
           return (
             <FlatListItem item={item} index={index} parentFlatList={this}></FlatListItem>
           );
@@ -113,7 +113,7 @@ export default class BasicFlatList extends Component {
             <RefreshControl refreshing={this.state.refreshing} 
                             onRefresh={this._onRefresh.bind(this)}/>}
         </FlatList>
-        <AddModal ref={'addModal'} parentFlatList={this}></AddModal>
+        <AddModal_Income ref={'addModal_Income'} parentFlatList={this}></AddModal_Income>
         <View style={{ flex: 1}}>
           <View style={{ flex: 1, justifyContent: 'flex-end'}}>
             <Button 

@@ -4,8 +4,8 @@ import { Constants } from 'expo';
 import {Actions} from 'react-native-router-flux';
 import Modal from 'react-native-modalbox';
 import Button from 'react-native-button';
-import flatListData from './flatListData';
-import BasicFlatList from './BasicFlatList';
+import flatListData_Income from './flatListData_Income';
+import BasicFlatList_Income from './BasicFlatList_Income';
 
 var screen = Dimensions.get('window');
 
@@ -13,7 +13,7 @@ export default class AddModal extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			newCategory: '',
+			newSave: '',
 			newCost: ''
 		};
 	}
@@ -38,7 +38,7 @@ export default class AddModal extends Component {
 				backdrop={true}
 				onClosed={() => {}}
 				>
-				<Text style={{fontSize: 16, fontWeight: 'bold', textAlign: 'center', marginTop: 40}}>New Expense</Text>
+				<Text style={{fontSize: 16, fontWeight: 'bold', textAlign: 'center', marginTop: 40}}>New Income</Text>
 				<TextInput 	
 					style={{height: 40, 
 							borderBottomColor: 'gray', 
@@ -47,9 +47,9 @@ export default class AddModal extends Component {
 							marginTop: 20,
 							marginBottom: 10,
 							borderBottomWidth: 1}}
-					onChangeText={(text) => this.setState({newCategory: text})}
-					placeholder= "Enter new Category"
-					value={this.state.newCategory}
+					onChangeText={(text) => this.setState({newSave: text})}
+					placeholder= "Enter Savings or Salary"
+					value={this.state.newSave}
 				/>
 				<TextInput 	
 					style={{height: 40, 
@@ -72,17 +72,17 @@ export default class AddModal extends Component {
 							borderRadius:6,
 							backgroundColor: 'blue'}}
 						onPress={() => {
-							if (this.state.newCategory.length == 0 || this.state.newCost.length == 0) {
-								alert("You must enter the category");
+							if (this.state.newSave.length == 0 || this.state.newCost.length == 0) {
+								alert("You must enter the income");
 								return;
 							}
 							const newKey = this.generateKey(24);
 							const newCategorys = {
 								key: newKey,
-								name: this.state.newCategory,
+								name: this.state.newSave,
 								foodDescription:"RM " + this.state.newCost
 							};
-							flatListData.push(newCategorys);
+							flatListData_Income.push(newCategorys);
 							this.props.parentFlatList.refreshFlatList(newKey);
 							this.refs.myModal.close();
 						}}>
