@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AppRegistry, Text, View, TouchableHighlight, StyleSheet, Alert, Platform, FlatList, Button } from 'react-native'
+import { AppRegistry, Text, View, TouchableHighlight, StyleSheet, Alert, Platform, FlatList, Button, RefreshControl } from 'react-native'
 import { Constants } from 'expo';
 import {Actions} from 'react-native-router-flux';
 import Swipeout from 'react-native-swipeout';
@@ -51,7 +51,7 @@ class FlatListItem extends Component {
       <Swipeout {...swipeSettings}>
         <View style={{flex: 1, flexDirection: 'column',}}>
           <View style={{flex: 1, flexDirection: 'row', backgroundColor: 'mediumseagreen'}}>
-            <View style={{flex: 1, flexDirection: 'column', height: 100}}>
+            <View style={{flex: 1, flexDirection: 'column'}}>
               <Text style={styles.flatListItem}>{this.props.item.name}</Text>
               <Text style={styles.flatListItem}>{this.props.item.foodDescription}</Text>
             </View>
@@ -92,6 +92,13 @@ export default class BasicFlatList extends Component {
     this.refs.addModal.showAddModal();
   }
 
+  _onRefresh(){
+    this.setState({refreshing: true});
+    this._onPressAdd().then(() => {
+      this.setState({refreshing: false})
+    });
+  }
+
   render () {
     return(
       <View style={{flex: 1, backgroundColor: '#ecf0f2', paddingTop: Constants.statusBarHeight, flexDirection: 'column'}}>
@@ -99,8 +106,12 @@ export default class BasicFlatList extends Component {
           return (
             <FlatListItem item={item} index={index} parentFlatList={this}></FlatListItem>
           );
-        }}
-        >
+          }}
+          >
+          refreshControl=
+          {
+            <RefreshControl refreshing={this.state.refreshing} 
+                            onRefresh={this._onRefresh.bind(this)}/>}
         </FlatList>
         <AddModal ref={'addModal'} parentFlatList={this}></AddModal>
         <View style={{ flex: 1}}>
