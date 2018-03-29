@@ -1,36 +1,40 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View, TouchableOpacity, Button, Alert, Platform, FlatList } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, Button, Alert, Platform, FlatList, AsyncStorage } from 'react-native';
 import DatePicker from 'react-native-datepicker'
 import { Constants } from 'expo';
 
 import {Actions} from 'react-native-router-flux';
-import List from './List';
+// import List from './List';
 
-export default class Expense extends React.Component {
+export default class Expense extends React.Component {  
 
-  constructor(props){
-    super(props)
-    this.state = {date:null, data:[{name: 'hi'}]}
-  }
-// 
-  goBack() {
-    Actions.pop();
-  }
+  	constructor(props){
+    	super(props)
+    	this.state = {date:null}
+  	}
 
-  List() {
-    Actions.List();
-  }
+  	goBack() {
+    	Actions.pop();
+	}
 
-   // async getKey() {
-   //   try {
-   //     const value = await AsyncStorage.getItem(item.name);
-   //     this.setState({myKey: value});
-   //       Actions.pop();
-   //   } catch (error) {
-   //     console.log("Error retrieving data" + error);
-   //   }
-   // }
-   
+  	BasicFlatList() {
+  	  Actions.BasicFlatList();
+  	}
+
+  	showData = async() => {
+  	  let myArray = await AsyncStorage.getItem('myArray');
+  	  let d = JSON.parse(myArray)
+  	  alert(d)
+  	}
+
+   	// async getKey() {
+   	  	// try {
+   	  	  	// const value = await AsyncStorage.getItem(item.name);
+   	  	  	// this.setState({myKey: value});
+   	  	  	 // Actions.pop();
+   	  	// } catch (error) {
+   	  	  	// console.log("Error retrieving data" + error);
+   	  	// }
    // async saveKey(item){
    //   try {
    //     await AsyncStorage.setItem(item.name);
@@ -95,16 +99,17 @@ export default class Expense extends React.Component {
           <View style={styles.div}>
             <Text style={styles.smallTitle}>Category</Text>
             <TouchableOpacity
-              onPress={this.List} 
+              onPress={this.BasicFlatList} 
               style = {styles.button}
               >
-              <FlatList
+{/*  		      <FlatList
               style = {styles.buttonWord}
               data = {this.state.data}
-              renderItem={({item}) =>
+              renderItem={({item}) =>  
               <Text>{item.name}</Text>
               }
-              />
+              />*/}
+              <Text>{this.showData}</Text>
             </TouchableOpacity>
           </View>
         </View>

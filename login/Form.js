@@ -24,7 +24,8 @@ export default class Form extends Component<{}>{
         alert(error);
       });
   }
-
+  
+  
   render() {
     return (
        <View style={styles.container} behavior="padding">

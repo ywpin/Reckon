@@ -21,15 +21,19 @@
   "dependencies": {
     "expo": "^25.0.0",
     "firebase": "^4.12.0",
+    "random-string": "^0.2.0",
     "react": "16.2.0",
     "react-native": "0.52.0",
+    "react-native-button": "^2.3.0",
     "react-native-calendar-android": "0.0.6",
     "react-native-calendar-picker": "^5.14.0",
     "react-native-calendar-select": "^0.1.2",
     "react-native-calendarevents-android": "^0.1.1",
     "react-native-datepicker": "^1.6.0",
     "react-native-keyboard-aware-scroll-view": "^0.4.4",
+    "react-native-modalbox": "^1.4.2",
     "react-native-router-flux": "^4.0.0-beta.28",
+    "react-native-swipeout": "^2.3.3",
     "react-native-tabs": "^1.0.9"
   }
 }
