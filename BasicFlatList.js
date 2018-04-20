@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AppRegistry, Text, View, TouchableHighlight, StyleSheet, Alert, Platform, FlatList, Button, RefreshControl } from 'react-native'
+import { AppRegistry, Text, View, StyleSheet, Alert, Platform, FlatList, Button, RefreshControl } from 'react-native'
 import { Constants } from 'expo';
 import {Actions} from 'react-native-router-flux';
 import Swipeout from 'react-native-swipeout';
@@ -49,7 +49,7 @@ class FlatListItem extends Component {
 
     return (
       <Swipeout {...swipeSettings}>
-        <View style={{flex: 1, flexDirection: 'column',}}>
+        <View style={{flex: 1, flexDirection: 'column'}}>
           <View style={{flex: 1, flexDirection: 'row', backgroundColor: '#90a4ae'}}>
             <View style={{flex: 1, flexDirection: 'column'}}>
               <Text style={styles.flatListItem}>{this.props.item.name}</Text>
@@ -79,6 +79,7 @@ export default class BasicFlatList extends Component {
     });
     this._onPressAdd = this._onPressAdd.bind(this);
   }
+
   refreshFlatList = (activeKey) => { 
     this.setState((prevState) => {
       return {
@@ -87,6 +88,7 @@ export default class BasicFlatList extends Component {
     });
     this.refs.flatList.scrollToEnd();
   }
+
   _onPressAdd () {
     // alert("You add Item")
     this.refs.addModal.showAddModal();
@@ -98,6 +100,10 @@ export default class BasicFlatList extends Component {
       this.setState({refreshing: false})
     });
   }
+
+  // _addAmount(){
+  //   this.refs.showAmount();
+  // }
 
   render () {
     return(

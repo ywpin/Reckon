@@ -6,10 +6,10 @@ import Register from './register/Register';
 import Home from './Home';
 import BasicFlatList from './BasicFlatList';
 import BasicFlatList_Income from './BasicFlatList_Income';
-import Page from './calender/Page';
 import Firebase from './login/firebase';
 import AddModal from './AddModal';
 import flatListData from './flatListData';
+import Page from './calender/Page';
 
 export default class Date_router extends Component<{}>{
   render() {

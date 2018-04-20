@@ -15,12 +15,17 @@ export default class AddModal extends Component {
 		this.state = {
 			newCategory: '',
 			newCost: ''
+			// result: 0	
 		};
 	}
 
 	showAddModal = () => {
 		this.refs.myModal.open();
 	}
+
+	// showAmount = () => {
+	// 	this.setState({result : parseInt(this.state.newCost) + parseInt(this.state.newCost)}); 
+	// }
 
 	generateKey = (numberOfCharacters) => {
 		return require('random-string')({length: numberOfCharacters});
@@ -51,7 +56,8 @@ export default class AddModal extends Component {
 					placeholder= "Enter new Category"
 					value={this.state.newCategory}
 				/>
-				<TextInput 	
+				<TextInput 
+					// ref={"Cost"} 	
 					style={{height: 40, 
 							borderBottomColor: 'gray', 
 							marginLeft: 30, 

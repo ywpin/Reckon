@@ -8,7 +8,7 @@ import Form from './../login/Form';
 export default class MyDatePicker extends Component {
   constructor(props){
     super(props)
-    this.state = {date:null, data:[{name: 'Title Text', key: 'item1'}]}
+    this.state = {date:null}
   }
  
   render(){
@@ -42,14 +42,6 @@ export default class MyDatePicker extends Component {
           }}
           onDateChange={(date) => {this.setState({date: date})}}
         />
-        <View>
-          <FlatList
-            data = {this.state.data}
-            renderItem={({item})=>
-          <Text>{item.name}</Text>
-          }
-          />
-        </View>
       </View>
     )
   }
@@ -66,7 +58,7 @@ const styles = StyleSheet.create({
     width: 200,
     height: 150,
     padding: 12,
-    marginTop: 90,
+    marginTop: 70,
     marginVertical: 10,
     alignSelf: 'center',
     justifyContent: 'flex-start'

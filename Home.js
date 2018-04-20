@@ -51,13 +51,9 @@ export default class Home extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={styles.div}>
-            <Text style={styles.smallTitle}>Balance</Text>
-            <Text style={styles.button}></Text>
-          </View>
-          <View style={styles.div}>
             <Text style={styles.smallTitle}>Transactions</Text>
               <TouchableOpacity
-                onPress={this.BasicFlatList}
+                onPress={this.Page}
                 style={styles.button}>
               <Text style={styles.buttonWord}>View</Text>
             </TouchableOpacity>
@@ -106,9 +102,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: -120,
+    marginTop: -160,
   },
   buttonWord: {
     fontSize: 20,
+    color: '#344a5e'
   },
 });
